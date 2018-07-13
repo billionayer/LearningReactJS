@@ -13,13 +13,16 @@ Lecture Notes:
 
     If we want to use dynamically assigned properties we pass in a parameter to function called props.
 
+    Note:  Using the 'this' keyword would only work if this function had an actual property called 'props'; But since we are passing a a param
+    then we just use as is.
+
 */
 
 
 import React from 'react';
 
 const person = ( props ) => {
-    return <p>I'm {props.name} and I am { props.age } years old</p>
-}
+    return <p>I'm {props.name} and I am { props.age } years old</p>;
+};
 
 export default person;
