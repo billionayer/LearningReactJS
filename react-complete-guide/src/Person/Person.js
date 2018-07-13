@@ -8,13 +8,18 @@ Lecture Notes:
 4.  One key thing.  If you want to utilize javascript in your JSX HTML you have to wrap it in curly braces
     Restrictions:  We cannot define a class or use complex code.  Basically inline calls.
 
+
+    Making this class dynmamic
+
+    If we want to use dynamically assigned properties we pass in a parameter to function called props.
+
 */
 
 
 import React from 'react';
 
-const person = () => {
-    return <p>I'm a Person and I am { Math.floor(Math.random() * 30) } years old</p>
+const person = ( props ) => {
+    return <p>I'm {props.name} and I am { props.age } years old</p>
 }
 
 export default person;
