@@ -34,7 +34,24 @@ class App extends Component {
 
   }
 
-  switchNameHandler = () =>
+  switchNameHandler = (newName) =>
+  {
+      //console.log('Was Clicked!');
+      //DON'T DO THIS: this.state.persons[1].name = 'Maximilian';
+      this.setState(
+
+        {
+          persons: [
+            {name: newName, age: 28},
+            {name: 'Manu', age: 29},
+            {name: 'Stephanie', age: Math.floor(Math.random() * 30)}
+          ]
+        }
+      );
+  }
+
+
+  newChangedHandler = (event) =>
   {
       //console.log('Was Clicked!');
       //DON'T DO THIS: this.state.persons[1].name = 'Maximilian';
@@ -43,7 +60,7 @@ class App extends Component {
         {
           persons: [
             {name: 'Max', age: 28},
-            {name: 'Manu', age: 29},
+            {name: event.target.value, age: 29},
             {name: 'Stephanie', age: Math.floor(Math.random() * 30)}
           ]
         }
@@ -55,10 +72,24 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I am a React App</h1>
         <p>This is really working!</p>
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>My Hobbies: Racing</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        {/*Not recommended because of performance issue*/}
+        <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
+        <Person 
+            name={this.state.persons[0].name} 
+            age={this.state.persons[0].age} 
+        />
+        
+        <Person 
+            name={this.state.persons[1].name} 
+            age={this.state.persons[1].age}
+            click={this.switchNameHandler.bind(this, 'Max!')}
+            changed={this.newChangedHandler}
+        > My Hobbies: Racing</Person> {/*Wiring the click event as a prop allows me to execute in a different component*/}
+        
+        <Person 
+            name={this.state.persons[2].name} 
+            age={this.state.persons[2].age} 
+        />
       </div>
     );
 
