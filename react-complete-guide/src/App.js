@@ -10,6 +10,11 @@ using 'state' needs to be done with care.
 *****************
 Very important.  When assigning a method to to call for a button click or event hanlder, do not include parenthesis.  Only put this.functionName as reference.
 
+Supported Events can be found at:
+
+https://reactjs.org/docs/events.html#supported-events
+
+
 */
 
 import React, { Component } from 'react';
