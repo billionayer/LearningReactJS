@@ -66,32 +66,47 @@ class App extends Component {
         }
       );
   }
+
+
+
+
   render() 
   {
-    return (
-      <div className="App">
-        <h1>Hi, I am a React App</h1>
-        <p>This is really working!</p>
-        {/*Not recommended because of performance issue*/}
-        <button onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
-        <Person 
-            name={this.state.persons[0].name} 
-            age={this.state.persons[0].age} 
-        />
-        
-        <Person 
-            name={this.state.persons[1].name} 
-            age={this.state.persons[1].age}
-            click={this.switchNameHandler.bind(this, 'Max!')}
-            changed={this.newChangedHandler}
-        > My Hobbies: Racing</Person> {/*Wiring the click event as a prop allows me to execute in a different component*/}
-        
-        <Person 
-            name={this.state.persons[2].name} 
-            age={this.state.persons[2].age} 
-        />
-      </div>
-    );
+      //Use inline style to scope
+      const style = {
+        backgroundColor: 'red',
+        font: 'inherit',
+        border: '1px solid blue',
+        padding: '8px',
+        cursor: 'pointer'
+      };
+
+      return (
+        <div className="App">
+          <h1>Hi, I am a React App</h1>
+          <p>This is really working!</p>
+          {/*Not recommended because of performance issue*/}
+          <button
+              style={style}
+              onClick={() => this.switchNameHandler('Maximilian!!')}>Switch Name</button>
+          <Person 
+              name={this.state.persons[0].name} 
+              age={this.state.persons[0].age} 
+          />
+          
+          <Person 
+              name={this.state.persons[1].name} 
+              age={this.state.persons[1].age}
+              click={this.switchNameHandler.bind(this, 'Max!')}
+              changed={this.newChangedHandler}
+          > My Hobbies: Racing</Person> {/*Wiring the click event as a prop allows me to execute in a different component*/}
+          
+          <Person 
+              name={this.state.persons[2].name} 
+              age={this.state.persons[2].age} 
+          />
+        </div>
+      );
 
     //This what eventually what gets compiled with JSX
     // return React.createElement('div',{className: 'App'}, React.createElement('h1', null,'Hi, I am a React App!!!' ))
